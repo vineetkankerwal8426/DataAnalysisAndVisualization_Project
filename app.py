@@ -285,7 +285,7 @@ def volatile(df,op):
 
 st.title(":red[STOCK ANALYSIS]")
 
-df = pd.read_csv("C:\\Users\\VINEET\\Downloads\\archive (1)\\Stock Prices.csv")
+df = pd.read_csv("Stock Prices.csv")
 df["Date"] = pd.to_datetime(df["Date"])
 df.drop(df.index[(df["ticker"] == "AAL")],axis=0,inplace=True)
 
