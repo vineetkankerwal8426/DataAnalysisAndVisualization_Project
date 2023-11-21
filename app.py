@@ -283,6 +283,270 @@ def volatile(df,op):
 
     return main_chart.interactive()
 
+def googlTT(data):
+    global hover,tooltips,main_chart
+    hover = alt.selection_single(
+        fields=["Date"],
+        nearest=True,
+        on="mouseover",
+        empty="none",
+    )
+    data['total_trade'] = data['open']*data['volume']
+    main_chart = alt.Chart(data).transform_filter(
+        'datum.ticker==="GOOGL"'
+        ).mark_area(
+        line={'color':'darkgreen'},
+        color=alt.Gradient(
+            gradient='linear',
+            stops=[alt.GradientStop(color='white', offset=0),
+                   alt.GradientStop(color='darkgreen', offset=1)],
+            x1=1,
+            x2=1,
+            y1=1,
+            y2=0
+        )
+        ).encode(
+        alt.X('Date:T'),
+        alt.Y('total_trade:Q')
+        )
+    
+    points = main_chart.transform_filter(hover).mark_circle(size=30)
+    tooltips = (
+        alt.Chart(data)
+        .mark_rule()
+        .encode(
+            x="yearmonthdate(Date)",
+            y="open",
+            opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
+            tooltip=[
+                alt.Tooltip("Date", title="Date"),
+                alt.Tooltip("total_trade", title="USD $"),
+            ],
+        )
+        .add_selection(hover)
+    )
+    return (main_chart +points+ tooltips).interactive()
+
+def aaplTT(data):
+    global hover,tooltips,main_chart
+    hover = alt.selection_single(
+        fields=["Date"],
+        nearest=True,
+        on="mouseover",
+        empty="none",
+    )
+    data['total_trade'] = data['open']*data['volume']
+    main_chart = alt.Chart(data).transform_filter(
+        'datum.ticker==="AAPL"'
+        ).mark_area(
+        line={'color':'darkgreen'},
+        color=alt.Gradient(
+            gradient='linear',
+            stops=[alt.GradientStop(color='white', offset=0),
+                   alt.GradientStop(color='darkgreen', offset=1)],
+            x1=1,
+            x2=1,
+            y1=1,
+            y2=0
+        )
+        ).encode(
+        alt.X('Date:T'),
+        alt.Y('total_trade:Q')
+        )
+    
+    points = main_chart.transform_filter(hover).mark_circle(size=30)
+    tooltips = (
+        alt.Chart(data)
+        .mark_rule()
+        .encode(
+            x="yearmonthdate(Date)",
+            y="open",
+            opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
+            tooltip=[
+                alt.Tooltip("Date", title="Date"),
+                alt.Tooltip("total_trade", title="USD $"),
+            ],
+        )
+        .add_selection(hover)
+    )
+    return (main_chart +points+ tooltips).interactive()
+
+def nflxTT(data):
+    global hover,tooltips,main_chart
+    hover = alt.selection_single(
+        fields=["Date"],
+        nearest=True,
+        on="mouseover",
+        empty="none",
+    )
+    data['total_trade'] = data['open']*data['volume']
+    main_chart = alt.Chart(data).transform_filter(
+        'datum.ticker==="NFLX"'
+        ).mark_area(
+        line={'color':'darkred'},
+        color=alt.Gradient(
+            gradient='linear',
+            stops=[alt.GradientStop(color='white', offset=0),
+                   alt.GradientStop(color='darkgreen', offset=1)],
+            x1=1,
+            x2=1,
+            y1=1,
+            y2=0
+        )
+        ).encode(
+        alt.X('Date:T'),
+        alt.Y('total_trade:Q')
+        )
+    
+    points = main_chart.transform_filter(hover).mark_circle(size=30)
+    tooltips = (
+        alt.Chart(data)
+        .mark_rule()
+        .encode(
+            x="yearmonthdate(Date)",
+            y="open",
+            opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
+            tooltip=[
+                alt.Tooltip("Date", title="Date"),
+                alt.Tooltip("total_trade", title="USD $"),
+            ],
+        )
+        .add_selection(hover)
+    )
+    return (main_chart +points+ tooltips).interactive()
+
+def tslaTT(data):
+    global hover,tooltips,main_chart
+    hover = alt.selection_single(
+        fields=["Date"],
+        nearest=True,
+        on="mouseover",
+        empty="none",
+    )
+    data['total_trade'] = data['open']*data['volume']
+    main_chart = alt.Chart(data).transform_filter(
+        'datum.ticker==="TSLA"'
+        ).mark_area(
+        line={'color':'darkgreen'},
+        color=alt.Gradient(
+            gradient='linear',
+            stops=[alt.GradientStop(color='white', offset=0),
+                   alt.GradientStop(color='darkgreen', offset=1)],
+            x1=1,
+            x2=1,
+            y1=1,
+            y2=0
+        )
+        ).encode(
+        alt.X('Date:T'),
+        alt.Y('total_trade:Q')
+        )
+    
+    points = main_chart.transform_filter(hover).mark_circle(size=30)
+    tooltips = (
+        alt.Chart(data)
+        .mark_rule()
+        .encode(
+            x="yearmonthdate(Date)",
+            y="open",
+            opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
+            tooltip=[
+                alt.Tooltip("Date", title="Date"),
+                alt.Tooltip("total_trade", title="USD $"),
+            ],
+        )
+        .add_selection(hover)
+    )
+    return (main_chart +points+ tooltips).interactive()
+
+def amznTT(data):
+    global hover,tooltips,main_chart
+    hover = alt.selection_single(
+        fields=["Date"],
+        nearest=True,
+        on="mouseover",
+        empty="none",
+    )
+    data['total_trade'] = data['open']*data['volume']
+    main_chart = alt.Chart(data).transform_filter(
+        'datum.ticker==="AMZN"'
+        ).mark_area(
+        line={'color':'darkred'},
+        color=alt.Gradient(
+            gradient='linear',
+            stops=[alt.GradientStop(color='white', offset=0),
+                   alt.GradientStop(color='darkgreen', offset=1)],
+            x1=1,
+            x2=1,
+            y1=1,
+            y2=0
+        )
+        ).encode(
+        alt.X('Date:T'),
+        alt.Y('total_trade:Q')
+        )
+    
+    points = main_chart.transform_filter(hover).mark_circle(size=30)
+    tooltips = (
+        alt.Chart(data)
+        .mark_rule()
+        .encode(
+            x="yearmonthdate(Date)",
+            y="open",
+            opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
+            tooltip=[
+                alt.Tooltip("Date", title="Date"),
+                alt.Tooltip("total_trade", title="USD $"),
+            ],
+        )
+        .add_selection(hover)
+    )
+    return (main_chart +points+ tooltips).interactive()
+
+def msftTT(data):
+    global hover,tooltips,main_chart
+    hover = alt.selection_single(
+        fields=["Date"],
+        nearest=True,
+        on="mouseover",
+        empty="none",
+    )
+    data['total_trade'] = data['open']*data['volume']
+    main_chart = alt.Chart(data).transform_filter(
+        'datum.ticker==="MSFT"'
+        ).mark_area(
+        line={'color':'darkgreen'},
+        color=alt.Gradient(
+            gradient='linear',
+            stops=[alt.GradientStop(color='white', offset=0),
+                   alt.GradientStop(color='darkgreen', offset=1)],
+            x1=1,
+            x2=1,
+            y1=1,
+            y2=0
+        )
+        ).encode(
+        alt.X('Date:T'),
+        alt.Y('total_trade:Q')
+        )
+    
+    points = main_chart.transform_filter(hover).mark_circle(size=30)
+    tooltips = (
+        alt.Chart(data)
+        .mark_rule()
+        .encode(
+            x="yearmonthdate(Date)",
+            y="open",
+            opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
+            tooltip=[
+                alt.Tooltip("Date", title="Date"),
+                alt.Tooltip("total_trade", title="USD $"),
+            ],
+        )
+        .add_selection(hover)
+    )
+    return (main_chart +points+ tooltips).interactive()
+
 st.title(":red[STOCK ANALYSIS]")
 
 df = pd.read_csv("Stock Prices.csv")
@@ -394,7 +658,7 @@ if options == 'GOOGL':
     st.altair_chart(volume(df[df['ticker']=='GOOGL']),use_container_width=True)
 
     st.header('TOTAL TRADE')
-    st.altair_chart(totalTrade(df[df['ticker']=='GOOGL']),use_container_width=True)
+    st.altair_chart(googlTT(df[df['ticker']=='GOOGL']),use_container_width=True)
 
     st.header('CANDLE STICK')
     st.altair_chart(candle(df[df['ticker']=='GOOGL']),use_container_width=True)
@@ -421,7 +685,7 @@ elif options == 'AAPL':
     st.altair_chart(volume(df[df['ticker']=='AAPL']),use_container_width=True)
 
     st.header('TOTAL TRADE')
-    st.altair_chart(totalTrade(df[df['ticker']=='AAPL']),use_container_width=True)
+    st.altair_chart(aaplTT(df[df['ticker']=='AAPL']),use_container_width=True)
 
     st.header('CANDLE STICK')
     st.altair_chart(candle(df[df['ticker']=='AAPL']),use_container_width=True)
@@ -449,7 +713,7 @@ if options == 'NFLX':
     st.altair_chart(volume(df[df['ticker']=='NFLX']),use_container_width=True)
 
     st.header('TOTAL TRADE')
-    st.altair_chart(totalTrade(df[df['ticker']=='NFLX']),use_container_width=True)
+    st.altair_chart(nflxTT(df[df['ticker']=='NFLX']),use_container_width=True)
 
     st.header('CANDLE STICK')
     st.altair_chart(candle(df[df['ticker']=='NFLX']),use_container_width=True)
@@ -477,7 +741,7 @@ if options == 'TSLA':
     st.altair_chart(volume(df[df['ticker']=='TSLA']),use_container_width=True)
 
     st.header('TOTAL TRADE')
-    st.altair_chart(totalTrade(df[df['ticker']=='TSLA']),use_container_width=True)
+    st.altair_chart(tslaTT(df[df['ticker']=='TSLA']),use_container_width=True)
 
     st.header('CANDLE STICK')
     st.altair_chart(candle(df[df['ticker']=='TSLA']),use_container_width=True)
@@ -505,7 +769,7 @@ if options == 'AMZN':
     st.altair_chart(volume(df[df['ticker']=='AMZN']),use_container_width=True)
 
     st.header('TOTAL TRADE')
-    st.altair_chart(totalTrade(df[df['ticker']=='AMZN']),use_container_width=True)
+    st.altair_chart(amznTT(df[df['ticker']=='AMZN']),use_container_width=True)
 
     st.header('CANDLE STICK')
     st.altair_chart(candle(df[df['ticker']=='AMZN']),use_container_width=True)
@@ -533,7 +797,7 @@ if options == 'MSFT':
     st.altair_chart(volume(df[df['ticker']=='MSFT']),use_container_width=True)
 
     st.header('TOTAL TRADE')
-    st.altair_chart(totalTrade(df[df['ticker']=='MSFT']),use_container_width=True)
+    st.altair_chart(msftTT(df[df['ticker']=='MSFT']),use_container_width=True)
 
     st.header('CANDLE STICK')
     st.altair_chart(candle(df[df['ticker']=='MSFT']),use_container_width=True)
